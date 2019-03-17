@@ -1,0 +1,62 @@
+{#
+ # Layout template
+ # ---------------
+ #
+ # This template defines your site’s global layout. It can be
+ # “extended” by other templates to fill in the gaps.
+ #
+ # See Twig’s Template Inheritance documentation for more details:
+ # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+ #}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+	<meta charset="utf-8" />
+	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+	<link rel="home" href="{{ siteUrl }}" />
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    {% includeCssFile "/protection/assets/css/style.css" %}
+    {% includeCssFile "/protection/assets/css/bootstrap.min.css" %}
+    {% includeCssFile "/protection/assets/css/lightbox.css" %}
+    {% includeJsFile "/protection/assets/js/jquery.min.js" %}
+    {% includeJsFile "/protection/assets/js/bootstrap.min.js" %}
+    {% includeJsFile "/protection/assets/js/lightbox.js" %}
+   
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">    
+</head>
+
+<body>
+<!--	
+<div class="top_bar">
+	
+	<div class="standard_width clearfix"></div>
+
+</div>	
+-->	
+<div class="wrapper standard_width">
+
+   <header class="site_header">
+	   
+	   <h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1> 
+       
+   </header>
+   
+   {% include 'partials/_navbar.html' %} 
+   
+   {% block content %}
+   {% endblock %}	
+
+</div>	
+	
+<footer class="site_footer standard_width">
+	
+	Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved  •  Built with <a href="http://craftcms.com">Craft</a>
+
+</footer>
+	
+	
+</body>
+</html>

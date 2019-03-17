@@ -1,0 +1,16 @@
+
+
+{% extends "_layout" %}
+
+{% block content %}
+ 
+    {% paginate craft.entries.section('hazards').limit(blogSettings.postsPerPage) as info, entries %}
+	
+				
+		{% for entry in entries %}
+			{% include 'partials/_entry_hazard.html' %}
+		{% endfor %}
+	
+    {% include 'partials/_pagination.html' %}    
+ 
+{% endblock %}

@@ -1,0 +1,28 @@
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	
+  <a class="navbar-brand" href="{{ siteUrl }}">
+    <i class="fas fa-exclamation-triangle"></i>
+  </a>	
+	
+  <ul class="navbar-nav">
+	 
+	   {% for category in blogSettings.hazardlist %}
+	 
+	    <li class="nav-item">
+	      <a class="nav-link" href="{{category.url}}">{{category.title}}</a>
+	    </li>
+	    
+	    {% endfor %} 
+	       
+  </ul>
+   
+  	
+  <form class="form-inline" action="{{ url('search/results')}}">
+    <input class="form-control mr-sm-2" type="text" name="query" placeholder="Αναζήτηση">
+    <button class="btn btn-success" type="submit">Αναζήτηση</button>
+  </form>
+  
+</nav>
+

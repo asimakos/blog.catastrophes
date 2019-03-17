@@ -1,0 +1,36 @@
+
+
+{% extends "_layout" %}
+
+{% block content %}
+
+{% set query=craft.request.getParam('query') %}
+
+{% set entries=craft.entries.section('hazards').search(query).order('score').limit(blogSettings.postsPerPage) %}
+  
+   <div class="container">
+      <div class="jumbotron">
+      <h2>{{category}} </h2>      
+    </div> 
+        
+   </div>
+   
+   {% if entries | length %}
+   
+        <h2>{{ entries | length | plural('Αποτέλεσμα','Αποτελέσματα') }} για <b> {{query}} </b> </h2>
+          
+		{% paginate entries as info, entries %}
+						
+			{% for entry in entries %}
+				{% include 'partials/_entry_hazard.html' %}
+			{% endfor %}
+		
+		{% include 'partials/_pagination.html' %} 
+	
+	{% else %}
+	
+	<h2>Δυστυχώς δεν βρέθηκαν αποτελέσματα για κριτήριο λέξης {{query}}</h2>
+		
+	{% endif %}   
+ 
+{% endblock %}

@@ -1,0 +1,24 @@
+
+<article class="blog_entry">
+	
+	 <p align="center">
+		 <a href="#" class="btn btn-default">
+		 <i class="far fa-calendar-alt"></i> {{entry.postDate | date('M d, Y')}} </a>
+		 <br>
+		 {% include 'partials/_entry_image.html' %}
+     </p>
+     
+	<h2 class="entry_title"><a href="{{ entry.url }}">{{ entry.title }}</a></h2>
+
+    {% set paragraph = entry.body | split('</p>') %}
+    {% set entry_hazard = paragraph | first ~ '</p>' %} 
+    {{ entry_hazard | raw }}
+
+    <p align="center">    
+	    <a href="{{entry.url}}" class="btn btn-default">
+		 Περισσότερα <i class="fas fa-arrow-circle-right"></i> </a>
+    </p> 
+    
+        {% include 'partials/_entry_category.html' %}  
+    
+</article>

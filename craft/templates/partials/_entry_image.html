@@ -1,0 +1,25 @@
+
+{% if entry.entryImage | length %}
+
+   {% set postimage = " " %}
+   {% set img_dimensions = {
+	   mode: 'fit',
+	   height:100,
+	   width:150} %}
+	   
+   {% for asset in entry.entryImage %}
+       
+      {% set postimage = asset.url %}
+                      
+   {% endfor %}
+    
+     
+<a href='{{postimage}}' data-lightbox="{{entry.title}}" data-title="{{entry.title}}">
+
+  <img src="{{postimage}}" alt="{{entry.title}}" width="150" height="100"> 
+
+</a>    
+   
+		
+ 
+{% endif %}
